@@ -1,0 +1,46 @@
+﻿<Window x:Class="ScribeSharp.MainWindow"
+        x:Name="Main"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:view="clr-namespace:ScribeSharp.View"
+        mc:Ignorable="d"
+        Title="ScribeSharp" Height="500" Width="1024">
+    <DockPanel DataContext="{Binding Main, Source={StaticResource Locator}}">
+        <Menu Width="Auto" Height="20" DockPanel.Dock="Top" VerticalAlignment="Top">
+            <MenuItem Header="File">
+                <MenuItem Header="New Project" Command="{Binding Path=NewProjectCommand}">
+                    <MenuItem.Icon>
+                        <Image Source="/ScribeSharp;component/Resources/NewFile_16x.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="Open Project" Command="{Binding Path=OpenProjectCommand}" CommandParameter="{Binding ElementName=Main}">
+                    <MenuItem.Icon>
+                        <Image Source="/ScribeSharp;component/Resources/OpenFolder_16x.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Save Project" Command="{Binding Path=SaveProjectCommand}">
+                    <MenuItem.Icon>
+                        <Image Source="/ScribeSharp;component/Resources/Save_16x.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Export" Command="{Binding Path=ExportProjectCommand}">
+                    
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="Exit" Command="{Binding Path=ExitCommand}">
+                    <MenuItem.Icon>
+                        <Image Source="/ScribeSharp;component/Resources/CloseSolution_16x.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            
+            <MenuItem Header="Help">
+                
+            </MenuItem>
+        </Menu>
+    <view:BlueprintContainerView/>
+    </DockPanel>
+</Window>

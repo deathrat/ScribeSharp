@@ -1,0 +1,45 @@
+﻿<Window x:Class="ScribeSharp.View.EditComponentView"
+        x:Name="EditComponentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ScribeSharp.View"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:command="http://www.galasoft.ch/mvvmlight"
+        mc:Ignorable="d"
+        Title="Edit Component" Height="300" Width="425"
+        DataContext="{Binding EditComponentViewModel, Source={StaticResource Locator}}">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Closing">
+            <command:EventToCommand Command="{Binding ClosingCommand}" PassEventArgsToCommand="True"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.75*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Margin="5,0" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0">Field:</Label>
+        <Label Margin="5,0" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0">Field Value:</Label>
+        
+        <ComboBox SelectedIndex="0" Margin="15" VerticalAlignment="Center" HorizontalAlignment="Stretch" Grid.Row="0" Grid.Column="1" ItemsSource="{Binding Path=SelectedItem.GetFields}" SelectedItem="{Binding Path=SelectedFieldInfo}"/>
+        <ScrollViewer VerticalScrollBarVisibility="Visible" Grid.Row="1" Grid.Column="1">
+            <Grid Margin="5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <ContentControl VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Content="{Binding SelectedFieldValueControl}"/>
+            </Grid>
+        </ScrollViewer>
+
+        <DockPanel Grid.Column="1" Grid.Row="2">
+            <Button Margin="5" Width="65" HorizontalAlignment="Right" VerticalAlignment="Center" DockPanel.Dock="Right" Command="{Binding Path=CancelButtonCommand}" CommandParameter="{Binding ElementName=EditComponentWindow}">Cancel</Button>
+            <Button Margin="5" Width="65" HorizontalAlignment="Right" VerticalAlignment="Center" DockPanel.Dock="Left" Command="{Binding Path=OkButtonCommand}" CommandParameter="{Binding ElementName=EditComponentWindow}">Ok</Button>
+        </DockPanel>
+    </Grid>
+</Window>
