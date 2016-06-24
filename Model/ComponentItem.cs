@@ -5,7 +5,6 @@ using System.Linq;
 using System.Reflection;
 using GalaSoft.MvvmLight;
 using Newtonsoft.Json;
-using ScribeSharp.Util;
 
 namespace ScribeSharp.Model
 {
