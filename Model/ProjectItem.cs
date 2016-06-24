@@ -15,6 +15,7 @@ namespace ScribeSharp.Model
     {
         public string Name { get; set; }
         public string Location { get; set; }
+        //TODO: add export extension selection.
 
         public void Save(List<BlueprintItem> blueprints)
         {
@@ -104,6 +105,6 @@ namespace ScribeSharp.Model
             return new Tuple<ProjectItem, List<BlueprintItem>>(proj, list);
         }
 
-        string GetProjectFile => $"{Location}\\{Name}.Scribe";
+        string GetProjectFile => $"{Location}\\{Name}.scribe";
     }
 }

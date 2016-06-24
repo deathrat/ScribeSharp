@@ -58,7 +58,7 @@ namespace ScribeSharp.ViewModel
             var openDlg = dlg.ShowDialog(window);
             if (openDlg == CommonFileDialogResult.Ok)
             {
-                if (dlg.FileName.EndsWith(".Scribe"))
+                if (dlg.FileName.EndsWith(".scribe"))
                 {
                     var msg = new OpenProjectMessage()
                     {
